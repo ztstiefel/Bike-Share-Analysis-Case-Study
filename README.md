@@ -329,14 +329,46 @@ Visalization (Tableau):
 
 ![image](https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/180fb7b8-8ef0-44ee-9c54-2ed3ae2bf084)
 
+- The share of Member rides is nearly **39% higher** than that of casual rides.
+
 <img src = https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/afa59a9d-e3ad-4159-924e-0dc4d44bd899 width="300" height="500" />
+
+- The electric bike type is **strongly favored** by all types of riders. The electric bike type is the **most favored type of bike to ride overall** by both, and especially with casual riders. However, The classic bike is over **65% more favored** by members than casual riders.
 
 ![overall_ride_length_minutes](https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/f286a667-bc19-44ca-abe3-70fed3229371)
 
+- Casual riders ride for far longer than members do: over **78% longer** on average. This seems to suggest that casual riders use their bike rentals for leisure activity, whereas the member riders use their bike rentals to get to and from specific destinations, such as work, school, errands, or other transportation methods.
+
 <img src = https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/c9524c3d-4dcb-4913-93d6-324ded16aa11 width = "500" height = "600" />
+
+- Over the course of a week,  member average ride time stays consistent whereas casual ride time dips significantly during the week, with a pronounced dip in the middle of the week. This reinforces the perception that casual riders typically use their rentals for leisure use. This can be seen by the higher bike rental usage on Saturdays and Sundays. 
 
 <img src = https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/2917dc3d-3704-4136-aaf6-85cd64ea66c9 width = "500" height = "600" />
 
+- Interestingly, when viewing total ridership over the course of the week, the pattern is flipped. Member rides increase as the work week continues (particularly in the middle of the week on Tuesday, Wednesday, and Thursday.) Conversely, casual rides pick up substantially only on Saturday and SUnday.
+
 <img src = https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/40aba75e-65e0-48ac-a1a5-14cf7ac6d7c8 width = "500" height = "600" />
 
+- When broken down by month, overall ridership dips substantially during the winter months and peaks in the summer months, aligning with the way people engage with the outdoors in the Northern Hemisphere. With that being said, member ridership does not drop off nearly as much as casual ridership does.
+
 <img src = https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/99f7fce7-a27a-4b19-8891-499cfd000397 width = "600" height = "600" />
+
+- Even in the colder winter months, casual riders are using their bike rentals for far longer than members.
+
+## Act
+
+### Key Takeaways
+
+- Annual members and casual riders do use their bikes in different ways
+- Annual members use their bikes for about 13 minutes on average and casual riders use their bikes for almost 30 minutes on average
+- Bike usage by annual members remains more constant regardless of the season
+
+### Limitations
+- The dataset used for this analysis lacks demographic data, including age, ethnicity, and gender. These are key aspects to consider when deciding who to target in an effective marketing campaign.
+
+### Reccomendations
+- Expanding the availability of the electric bike to sway more casual riders to purchase a membership since they are the most popular option and may face shortages
+- Increase casual rider conversion by offering membership packages with greater flexibility such as month-to-month subscriptions
+- Create a points system for members that offers rewards and discounts based on trip duration and frequency of use
+- Target casual users through email and ad campaigns in the weeks prior to the summer months with highest ridership
+- Offer casual users a discount when purchasing their first year's membership.
