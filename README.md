@@ -97,10 +97,6 @@ FROM
 |------------|------------|
 |3466281|2337439|
 
-Visalization (Tableau):
-
-![image](https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/180fb7b8-8ef0-44ee-9c54-2ed3ae2bf084)
-
 3. Determine what kinds of bikes were preferred by members and casual riders:
 
 ```sql
@@ -125,8 +121,6 @@ electric_bike	|member|	1716612
 
 Visualization (Tableau):
 
-<img src = https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/afa59a9d-e3ad-4159-924e-0dc4d44bd899 width="300" height="500" />
-
 4. Calculate the average ride length for members and casual riders:
 
 ```sql
@@ -144,8 +138,6 @@ member_casual | avg_ride_length
 ------------- | ---------------
 casual        |     28.60512
 member        |     12.49493
-
-![overall_ride_length_minutes](https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/f286a667-bc19-44ca-abe3-70fed3229371)
 
 5. Calculate the average ride length by member / casual rider by day of the week:
 
@@ -187,8 +179,6 @@ friday|	member|	12:20|	12.33|
 saturday|	casual|	32:20|	32.33|
 saturday|	member|	13:58|	13.97|
                
-<img src = https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/c9524c3d-4dcb-4913-93d6-324ded16aa11 width = "500" height = "600" />
-
 6. Calculate total ridership for each member type by day of the week:
 
 ```sql
@@ -228,8 +218,6 @@ friday|	member|	489857
 saturday|	casual|	471481
 saturday|	member|	452133
 
-<img src = https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/2917dc3d-3704-4136-aaf6-85cd64ea66c9 width = "500" height = "600" />
-
 7. Calculate monthly ridership, broken down by member and casual status:
 
 ```sql
@@ -248,11 +236,11 @@ ORDER BY
 month_name|	member_casual|	ridership_count
 ----------|-----------------|----------------
 April|    member|	244832
-April|   	casual|	126417
+April|   casual|	126417
 May|      casual|	280415
 May|      member|	354443
 June|     member|	400153
-June|    	casual|	369051
+June|    casual|	369051
 July|     casual|	406055
 July|     member|	417433
 August|   casual|	358924
@@ -262,7 +250,7 @@ September|casual|	296697
 October|  member|	349696
 October|  casual|	208989
 November| casual|	100772
-November|	member|	236963
+November|member|	236963
 December| member|	136912
 December| casual|	44894
 January|  casual|	40008
@@ -272,15 +260,83 @@ February| casual|	43016
 March|    member|	196477
 March|    casual|	62201
 
-<src img = https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/87724dce-4275-4618-abff-e13c2c3a439a width = "500" height = "600" />
+8. Calculate the average ride length of members and casual riders by month:
 
+```sql
+SELECT
+	to_char(started_at, 'month') AS month,
+	member_casual,
+	AVG(EXTRACT(EPOCH FROM (ended_at - started_at)) / 60.0) AS avg_ride_length
+FROM 
+	casestudy01
+GROUP BY
+	month, member_casual
+ORDER BY
+	MIN(started_at)
+```
 
-               
+month|	member_casual|	avg_ride_length
+-----|---------------|-----------------
+april|    	member|	11.49240411
+april|    	casual|	29.53242707
+may|      	casual|	30.86961171
+may|      	member|	13.36667687
+june|     	member|	13.99843389
+june|     	casual|	32.09697521
+july|     	casual|	29.27808782
+july|     	member|	13.71834015
+august|   	casual|	29.31004832
+august|   	member|	13.38416349
+september|	member|	12.95013996
+september|	casual|	27.98516888
+october|  	member|	11.95817134
+october|  	casual|	26.38742685
+november| 	casual|	21.28623526
+november| 	member|	11.12862191
+december| 	member|	10.61948782
+december| 	casual|	22.28956431
+january|  	casual|	22.91483995
+january|  	member|	10.36176424
+february| 	member|	10.71427037
+february| 	casual|	23.19251635
+march|    	member|	10.44222123
+march|    	casual|	21.41227553
 
+After gathering the results of the SQL queries, I was left with a number of .CSV files. However, Tableau will only work with .XLSX files. So, I wrote the following Python script to take all the .CSV files in a directory and convert them to .XLSX for use with Tableau:
 
+```Python
+import os
+import pandas as pd
 
+dir = 'C:\\Users\\ztsti\\Downloads\\Case_Study_Project_01\\casestudy01_sql_data'
 
+def convert_csv_xlsx():
+    for file in os.listdir(dir):
+        f = os.path.join(dir, file)
+        if os.path.isfile(f):
+            df = pd.read_csv(os.path.join(dir, f))
+            xlsx_file = os.path.splitext(f)[0] + '.xlsx'
+            xlsx_path = os.path.join(dir, xlsx_file)
+            df.to_excel(xlsx_path, index=False)
 
+convert_csv_xlsx()
+```
+After converting all the .CSV files to .XLSX, files, I was ready to begin visualizing the data.
 
+## Share
 
+Visalization (Tableau):
 
+![image](https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/180fb7b8-8ef0-44ee-9c54-2ed3ae2bf084)
+
+<img src = https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/afa59a9d-e3ad-4159-924e-0dc4d44bd899 width="300" height="500" />
+
+![overall_ride_length_minutes](https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/f286a667-bc19-44ca-abe3-70fed3229371)
+
+<img src = https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/c9524c3d-4dcb-4913-93d6-324ded16aa11 width = "500" height = "600" />
+
+<img src = https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/2917dc3d-3704-4136-aaf6-85cd64ea66c9 width = "500" height = "600" />
+
+<img src = https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/40aba75e-65e0-48ac-a1a5-14cf7ac6d7c8 width = "500" height = "600" />
+
+<img src = https://github.com/ztstiefel/Bike-Share-Case-Analysis-Study/assets/41418360/99f7fce7-a27a-4b19-8891-499cfd000397 width = "600" height = "600" />
