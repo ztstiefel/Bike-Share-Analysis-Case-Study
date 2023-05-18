@@ -1,4 +1,4 @@
-# Bike Share Case Analysis Study
+# Bike Share Analysis Case Study
 
 This case study was completed as part of the [Google Data Analytics Certificate](https://grow.google/certificates/data-analytics/#?modal_active=none) course hosted on [Coursera](https://www.coursera.org/google-certificates/data-analytics-certificate?utm_source=google&utm_medium=institutions&utm_campaign=gwgsite).
 
